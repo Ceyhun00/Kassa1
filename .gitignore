@@ -266,6 +266,10 @@ KassaOne\bin
 KassaOne\obj
 KassaOne\wwwroot\lib
 
+\bin
+\obj
+\wwwroot\lib
+
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
@@ -341,3 +345,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/KassaOne/wwwroot/lib

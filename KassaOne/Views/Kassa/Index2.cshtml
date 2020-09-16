@@ -1,0 +1,71 @@
+﻿@using KassaOne.Models;
+
+<div class="container">
+
+    <div class="row ">
+        <div class=" col-6">
+            <div class="row f"> ПОЛНАЯ СТОИМОСТЬ КРЕДИТА @Model.ShowModel.CreditSum </div><hr>
+            <div class="row">Стоимость покупки:  @Model.ShowModel.PurchasePrice</div><hr>
+            <div class="row"> Срок кредитования: @Model.ShowModel.CreditTime </div><hr>
+            <div class="row">Ежемесячный платеж: @Model.ShowModel.MonthlyPayment</div><hr>
+            <div class="row"> Общая сумма выплат: @Model.ShowModel.CreditSum </div><hr>
+            <div class="row mb-5"> Общая переплата: @Model.ShowModel.TotalOverpayment</div>
+        </div>
+        <div class=" col-6">
+            <div id="piechart" style="width: 700px; height: 400px;"></div>
+        </div>
+    </div>
+
+
+</div>
+<table class="table table-striped text-center">
+    <caption>ГРАФИК ПЛАТЕЖЕЙ ПО КРЕДИТУ</caption>
+    <tr>
+        <th scope="col">№ Платежа</th>
+        <th scope="col">Остаток по кредиту (руб.)</th>
+        <th scope="col">Проценты (руб.)</th>
+        <th scope="col">Погашение долга (руб.)</th>
+        <th scope="col">Ежемесячный платеж (руб.)</th>
+    </tr>
+    @{ foreach (var item in Model.ShowTable)
+        {
+            <tr>
+                <td><b>@item.MonthNum</b></td>
+                <td>@item.SumCreditLast</td>
+                <td>@item.PayPercent</td>
+                <td>@item.PayMain</td>
+                <td>@item.MonthlyPayment</td>
+            </tr>
+        }
+    }
+
+</table>
+
+<script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['CreditSum', 'TotalOverpayment'],
+        ['Сумма', @Json.Serialize(double.Parse(Model.ShowModel.CreditSum))],
+        ['Переплата', @Json.Serialize(double.Parse(Model.ShowModel.TotalOverpayment))]
+
+                    ]);
+
+    var options = {
+        title: 'CreditSum : TotalOverpayment '
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+}
+
+</script>
+
+
+
+
+
+
+
