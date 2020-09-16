@@ -262,6 +262,9 @@ FakesAssemblies/
 
 # GhostDoc plugin setting file
 *.GhostDoc.xml
+KassaOne\bin
+KassaOne\obj
+KassaOne\wwwroot\lib
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
