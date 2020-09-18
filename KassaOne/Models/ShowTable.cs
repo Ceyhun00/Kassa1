@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KassaOne.Models
 {
@@ -17,15 +13,15 @@ namespace KassaOne.Models
         [Required]
         public string PayPercent { get; set; }
         [Required]
-        public string SumCreditLast { get; set; }
+        public string RemainingAmount { get; set; }
 
-        public ShowTable(int monthNum,string monthlyPayment, string payMain, string payPercent,string sumCreditLast)
+        public ShowTable(int monthNum,string monthlyPayment, string payMain, string payPercent,string remainingAmount)
         {
             MonthNum = monthNum;
             MonthlyPayment = monthlyPayment;
             PayMain = payMain;
             PayPercent = payPercent;
-            SumCreditLast = sumCreditLast;
+            RemainingAmount = remainingAmount;
         }
     }
 }

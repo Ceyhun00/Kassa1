@@ -1,5 +1,3 @@
-using System;
-
 namespace KassaOne.Models
 {
     public class ErrorViewModel
