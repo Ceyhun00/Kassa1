@@ -36,7 +36,6 @@ namespace KassaOne.Controllers
         }
         public double CalculateShowModel(CreditViewModel creditModel)
         {
-
             double s = creditModel.CreditSum;
             double i = (creditModel.RatePerYear / 12) / 100;
             double n = creditModel.CreditTime;
@@ -55,25 +54,16 @@ namespace KassaOne.Controllers
                 creditModel.CreditTime,
                 double.Parse(showModel.MonthlyPayment));
             var obj = new ResultViewModel (showModel,showTable );
-            return View("Index2",obj);
+            return View($"Index2",obj);
         }
 
         protected List<ShowTable> PaymentScheduleAnnuitet(double creditSum, double ratePerYear, double creditTime, double payment) // Метод расчета Аннуитетного платежа
         {
-            var interestRateMonth = ratePerYear / 12;
             var tableLst = new List<ShowTable>();
             for (int i = 0; i < creditTime; ++i)
             {
                 var percentage = creditSum * (ratePerYear / 100) / 12;
-                var monthNum = i + 1; //номер платежа 
-                if (monthNum == 1)
-                {
-                    tableLst.Add(new ShowTable(monthNum, payment.ToString("N2"),
-                        payment.ToString("N2"),
-                        percentage.ToString("N2"),
-                        creditSum.ToString("N2")));
-                    continue;
-                }
+                var monthNum = i+1 ; //номер платежа 
                 creditSum -= payment - percentage;
                 var monthlyPayment = payment.ToString("N2"); //Ежемесячный платеж
                 var payMain = (payment - percentage).ToString("N2"); //Платеж за основной долг
