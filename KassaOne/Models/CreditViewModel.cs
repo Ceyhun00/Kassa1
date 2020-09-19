@@ -7,7 +7,7 @@ namespace KassaOne.Models
         [Required]
         public double CreditSum { get; set; }
         [Required]
-        public int CreditTime { get; set; }
+        public int NumberOfPayments { get; set; }
         [Required]
         public double RatePerYear { get; set; }
         [Required]

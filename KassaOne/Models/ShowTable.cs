@@ -9,18 +9,18 @@ namespace KassaOne.Models
         [Required]
         public string MonthlyPayment { get; set; }
         [Required]
-        public string PayMain { get; set; }
+        public string MainPart { get; set; } //часть погашения долга от ежемесячного платежа
         [Required]
-        public string PayPercent { get; set; }
+        public string PercentPart { get; set; } //часть погашения процентов от ежемесячного платежа
         [Required]
         public string RemainingAmount { get; set; }
 
-        public ShowTable(int monthNum,string monthlyPayment, string payMain, string payPercent,string remainingAmount)
+        public ShowTable(int monthNum,string monthlyPayment, string mainPart, string percentPart,string remainingAmount)
         {
             MonthNum = monthNum;
             MonthlyPayment = monthlyPayment;
-            PayMain = payMain;
-            PayPercent = payPercent;
+            MainPart = mainPart;
+            PercentPart = percentPart;
             RemainingAmount = remainingAmount;
         }
     }
